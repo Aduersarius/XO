@@ -1,0 +1,48 @@
+#include "stdafx.h"
+#include <iostream>
+using namespace std;
+
+int main() {
+	int i,k,r,u,q=0,e;
+	char a,b;
+	char m[3][3] = { { 0,0,0 },{ 0,0,0 },{ 0,0,0 } };
+	for (int y = 0; y < 10; y++) {
+		cout << "     " << "1" << "   " << "2" << "   " << "3" << endl;
+		cout << "   " << "-------------" << endl << " a" << " | " << m[0][0] << " | " << m[0][1] << " | " << m[0][2] << " |" << endl;
+		cout << "   " << "-------------" << endl << " b" << " | " << m[1][0] << " | " << m[1][1] << " | " << m[1][2] << " |" << endl;
+		cout << "   " << "-------------" << endl << " c" << " | " << m[2][0] << " | " << m[2][1] << " | " << m[2][2] << " |" << endl;
+		cout << "   " << "-------------" << endl;
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
+				if (m[j % 3][j / 3] == 0 && j >= i) { k = j; break; }
+				else { k = 20; }
+			}
+			if (k != 20) {
+				cout << i + 1 << ". " << "mark cell ";
+				r = k / 3;
+				switch (r) {
+				case 0: cout << 'a'; break;
+				case 1: cout << 'b'; break;
+				case 2: cout << 'c'; break;
+				}
+				r = k % 3;
+				switch (r) {
+				case 0: cout << '1' << " as "; break;
+				case 1: cout << '2' << " as "; break;
+				case 2: cout << '3' << " as "; break;
+				}
+				if (y % 2 == 0) { cout << 'X' << endl; }
+				else { cout << 'O' << endl; }
+			}
+		}
+		cin >> u;
+		for (int j = 0; j <= u; j++) {
+			if (m[j % 3][j / 3] == 0) { e = j; q++; }
+			}
+			if (y % 2 == 0) { m[q % 3][q / 3] = 'X'; }
+			else { m[e % 3][e / 3] = 'O'; }
+
+		
+	}
+	return 0;
+}
