@@ -1,31 +1,35 @@
 #include "stdafx.h"
 #include <iostream>
 using namespace std;
-
 int main() {
-	int i,k,r,u,q=0,e;
-	char a,b;
+	int j, k, r, u = 0, p = 0, l;
 	char m[3][3] = { { 0,0,0 },{ 0,0,0 },{ 0,0,0 } };
-	for (int y = 0; y < 10; y++) {
-		cout << "     " << "1" << "   " << "2" << "   " << "3" << endl;
-		cout << "   " << "-------------" << endl << " a" << " | " << m[0][0] << " | " << m[0][1] << " | " << m[0][2] << " |" << endl;
-		cout << "   " << "-------------" << endl << " b" << " | " << m[1][0] << " | " << m[1][1] << " | " << m[1][2] << " |" << endl;
-		cout << "   " << "-------------" << endl << " c" << " | " << m[2][0] << " | " << m[2][1] << " | " << m[2][2] << " |" << endl;
-		cout << "   " << "-------------" << endl;
+	for (int y = 0;; y++) {
+		j = 0;
+		cout << "     1" << "   2   " << "3" << endl;
+		cout << "   -------------" << endl << " a" << " | " << m[0][0] << " | " << m[0][1] << " | " << m[0][2] << " |" << endl;
+		cout << "   -------------" << endl << " b" << " | " << m[1][0] << " | " << m[1][1] << " | " << m[1][2] << " |" << endl;
+		cout << "   -------------" << endl << " c" << " | " << m[2][0] << " | " << m[2][1] << " | " << m[2][2] << " |" << endl;
+		cout << "   -------------" << endl;
+		if ((m[0][0] == 'X'&& m[1][1] == 'X'&& m[2][2] == 'X') || (m[0][0] == 'O'&& m[1][1] == 'O'&& m[2][2] == 'O')) { if (y % 2 == 1) { cout << "player X won" << endl; break; } else { cout << "player O won" << endl; break; } }
+		if ((m[0][2] == 'X'&& m[1][1] == 'X'&& m[2][0] == 'X') || (m[0][2] == 'O'&& m[1][1] == 'O'&& m[2][0] == 'O')) { if (y % 2 == 1) { cout << "player X won" << endl; break; } else { cout << "player O won" << endl; break; } }
+		if ((m[0][0] == 'X'&& m[1][0] == 'X'&& m[2][0] == 'X') || (m[0][0] == 'O'&& m[1][0] == 'O'&& m[2][0] == 'O')) { if (y % 2 == 1) { cout << "player X won" << endl; break; } else { cout << "player O won" << endl; break; } }
+		if ((m[0][1] == 'X'&& m[1][1] == 'X'&& m[2][1] == 'X') || (m[0][1] == 'O'&& m[1][1] == 'O'&& m[2][1] == 'O')) { if (y % 2 == 1) { cout << "player X won" << endl; break; } else { cout << "player O won" << endl; break; } }
+		if ((m[0][2] == 'X'&& m[1][2] == 'X'&& m[2][2] == 'X') || (m[0][2] == 'O'&& m[1][2] == 'O'&& m[2][2] == 'O')) { if (y % 2 == 1) { cout << "player X won" << endl; break; } else { cout << "player O won" << endl; break; } }
+		if ((m[0][0] == 'X'&& m[0][1] == 'X'&& m[0][2] == 'X') || (m[0][0] == 'O'&& m[0][1] == 'O'&& m[0][2] == 'O')) { if (y % 2 == 1) { cout << "player X won" << endl; break; } else { cout << "player O won" << endl; break; } }
+		if ((m[1][0] == 'X'&& m[1][1] == 'X'&& m[1][2] == 'X') || (m[1][0] == 'O'&& m[1][1] == 'O'&& m[1][2] == 'O')) { if (y % 2 == 1) { cout << "player X won" << endl; break; } else { cout << "player O won" << endl; break; } }
+		if ((m[2][0] == 'X'&& m[2][1] == 'X'&& m[2][2] == 'X') || (m[2][0] == 'O'&& m[2][1] == 'O'&& m[2][2] == 'O')) { if (y % 2 == 1) { cout << "player X won" << endl; break; } else { cout << "player O won" << endl; break; } }
 		for (int i = 0; i < 9; i++) {
-			for (int j = 0; j < 9; j++) {
-				if (m[j % 3][j / 3] == 0 && j >= i) { k = j; break; }
-				else { k = 20; }
-			}
-			if (k != 20) {
-				cout << i + 1 << ". " << "mark cell ";
-				r = k / 3;
+			if (m[i / 3][i % 3] != 'X' && m[i / 3][i % 3] != 'O') {
+				j++;
+				cout << j << ". mark cell ";
+				r = i / 3;
 				switch (r) {
 				case 0: cout << 'a'; break;
 				case 1: cout << 'b'; break;
 				case 2: cout << 'c'; break;
 				}
-				r = k % 3;
+				r = i % 3;
 				switch (r) {
 				case 0: cout << '1' << " as "; break;
 				case 1: cout << '2' << " as "; break;
@@ -35,14 +39,13 @@ int main() {
 				else { cout << 'O' << endl; }
 			}
 		}
-		cin >> u;
-		for (int j = 0; j <= u; j++) {
-			if (m[j % 3][j / 3] == 0) { e = j; q++; }
-			}
-			if (y % 2 == 0) { m[q % 3][q / 3] = 'X'; }
-			else { m[e % 3][e / 3] = 'O'; }
-
-		
+		cin >> u; p = 0;
+		u -= 1;
+		for ( l = 0; p <= u; l++) {
+			if (m[l / 3][l % 3] != 'X' && m[l / 3][l % 3] != 'O') { k = l; p++; }
+		}
+		if (m[k / 3][k % 3] != 'X' && m[k / 3][k % 3] != 'O' && y % 2 == 0) { m[k / 3][k % 3] = 'X'; }
+		else if (m[k / 3][k % 3] != 'X' && m[k / 3][k % 3] != 'O' && y % 2 == 1) { m[k / 3][k % 3] = 'O'; }
 	}
 	return 0;
 }
